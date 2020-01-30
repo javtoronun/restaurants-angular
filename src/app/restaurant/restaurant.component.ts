@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Restaurant} from '../models';
+import { NeighborhoodCodePipe } from '../neighborhood-code.pipe';
+import {RestaurantService} from '../restaurant.service';
+import {HistorialService} from '../historial.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -9,7 +12,7 @@ import {Restaurant} from '../models';
 export class RestaurantComponent implements OnInit {
   flag = 0;
   @Input() item: Restaurant;
-  constructor() { }
+  constructor(private historialService: HistorialService) { }
 
   ngOnInit() {
   }
@@ -17,6 +20,7 @@ export class RestaurantComponent implements OnInit {
     let res = false;
     if (this.flag === 1) {
       res = true;
+      this.historialService.addRestaurantToHistorical(this.item);
     }
     return res;
   }

@@ -1,0 +1,6 @@
+<agm-map [latitude]="latitudCenter" [longitude]="longitudCenter"> <!-- center of the map -->
+  <div *ngFor="let item of restaurants">
+    <agm-marker [latitude]="item.latlng.lat" [longitude]="item.latlng.lng" (markerClick)="markerClicked(item)"></agm-marker>
+    <agm-info-window [maxWidth]="360" [isOpen]="id==item.id" [latitude]="item.latlng.lat" [longitude]="item.latlng.lng">{{item.name}}</agm-info-window>
+  </div>
+</agm-map>

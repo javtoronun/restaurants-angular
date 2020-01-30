@@ -4,15 +4,42 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RestaurantService} from './restaurant.service';
 import { RestaurantComponent } from './restaurant/restaurant.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MapComponent } from './map/map.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { NeighborhoodCodePipe } from './neighborhood-code.pipe';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogInfoRestaurantComponent } from './dialog-info-restaurant/dialog-info-restaurant.component';
+import { MatCardModule } from '@angular/material/card';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    HeaderComponent,
+    FooterComponent,
+    MapComponent,
+    NeighborhoodCodePipe,
+    JwPaginationComponent,
+    DialogInfoRestaurantComponent,
+    RestaurantListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDmVLRv1s1hCsLp_0fRsALPRArejqUV_G0'
+    }),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatCardModule
   ],
+  entryComponents: [DialogInfoRestaurantComponent],
   providers: [RestaurantService],
   bootstrap: [AppComponent]
 })

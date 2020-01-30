@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <app-map class="col-md-12" [restaurants]="restaurants"></app-map>
+    <article class="col-md-6" *ngFor="let item of pageOfItems">
+      <br>
+      <app-restaurant [item]="item"></app-restaurant>
+      <br>
+    </article>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-6">
+    <jw-pagination [items]="restaurants" (changePage)="onChangePage($event)" [pageSize]="2"></jw-pagination>
+  </div>
+</div>
+<h2 class="text-center">Visit History</h2>
+<div *ngIf="this.historialService.historicalRestaurants.size !=0; else emptyRes">
+  <div *ngFor="let rest of this.historialService.historicalRestaurants">
+    <p class="text-center">{{rest.name}}</p>
+  </div>
+</div>
+<ng-template #emptyRes>
+  <p class="text-center">Nothing to show</p>
+</ng-template>
+<br>
