@@ -16,7 +16,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogInfoRestaurantComponent } from './dialog-info-restaurant/dialog-info-restaurant.component';
 import { MatCardModule } from '@angular/material/card';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import {RouterModule, Routes} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
+const routes: Routes = [
+  { path: '', redirectTo: '/restaurants', pathMatch: 'full' },
+  { path: 'restaurants', component: RestaurantListComponent },
+  { path: 'restaurant/new', component: CreateRestaurantComponent },
+  { path: '**', component: PageNotFoundComponent},
+];
 
 @NgModule({
   declarations: [
@@ -28,16 +37,19 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
     NeighborhoodCodePipe,
     JwPaginationComponent,
     DialogInfoRestaurantComponent,
-    RestaurantListComponent
+    RestaurantListComponent,
+    PageNotFoundComponent,
+    CreateRestaurantComponent
   ],
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDmVLRv1s1hCsLp_0fRsALPRArejqUV_G0'
+      apiKey: 'AIzaSyDHx9VC82bWehXSIMIgHEWKcEGqnZFBOyA'
     }),
     BrowserAnimationsModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    RouterModule.forRoot(routes)
   ],
   entryComponents: [DialogInfoRestaurantComponent],
   providers: [RestaurantService],
