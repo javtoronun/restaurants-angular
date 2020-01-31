@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <section class="col-md-12" >
+      <app-map *ngIf="restaurantGrab !== undefined" [restaurants]="restaurants"></app-map>
+    </section>
+    &nbsp;
+    <article class="col-md-12" style="display:flex; justify-content: center;">
+      <app-restaurant [item]="restaurants[0]"></app-restaurant>
+      <br>
+    </article>
+  </div>
+  <br>
+  <button style="background-color: #e6f9ff; color: dodgerblue" mat-button (click)="goBack()">Atrás</button>
+</div>
+<br>
+
+

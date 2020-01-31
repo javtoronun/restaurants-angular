@@ -1,7 +1,9 @@
 <app-header></app-header>
 <nav class="text-center">
-  <a routerLink="/restaurants" routerLinkActive="true">Restaurants</a> &nbsp;
-  <a routerLink="/restaurant/new" routerLinkActive="true">Create Restaurant</a>
+  <a routerLink="/restaurants" [routerLinkActive]="['isActive']" [routerLinkActiveOptions]="{exact: true}">
+    <button style="background-color: #e6f9ff" mat-button>Restaurants</button></a> &nbsp;
+  <a routerLink="/restaurants/new" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}"><button style="background-color: #e6f9ff" mat-button>Create Restaurant</button></a>
 </nav>
+<br>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

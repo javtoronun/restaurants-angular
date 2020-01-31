@@ -1,14 +1,16 @@
-<mat-card style="text-align: center; background-color: #f2f2f2" [class.elevate]="condition()" (mouseover)="showSection()" (mouseout)="hideSection()">
-  <br>
-  <img class="col-md-10" src="{{item.photograph}}">
-  <h2 class="col-md-12">{{item.name}}</h2>
-  <p class="col-md-12">{{item.neighborhood | neighborhoodCode}}</p>
-  <p class="col-md-12">{{item.address}}</p>
-  <div class="col-md-12" *ngIf="item.reviews.length; else noReviews">
-    <p style="color:lightgreen" >This restaurant has {{item.reviews.length}} reviews.</p>
-  </div>
-</mat-card>
+<div *ngIf="item !== undefined">
+  <mat-card style="text-align: center; background-color: #f2f2f2" [class.elevate]="condition()" (click)="detailsRestaurant(item)" (mouseover)="showSection()" (mouseout)="hideSection()">
+    <br>
+    <img style="border-radius: 50%;" class="col-md-10" src="{{item.photograph}}">
+    <h2 class="col-md-12">{{item.name}}</h2>
+    <p class="col-md-12">{{item.neighborhood | neighborhoodCode}}</p>
+    <p class="col-md-12">{{item.address}}</p>
+    <div class="col-md-12" *ngIf="item.reviews.length; else noReviews">
+      <p style="color:lightgreen" >This restaurant has {{item.reviews.length}} reviews.</p>
+    </div>
+  </mat-card>
 
-<ng-template #noReviews >
-  <p class="col-md-12" style="color:darkred">No reviews in this restaurant.</p>
-</ng-template>
+  <ng-template #noReviews >
+    <p class="col-md-12" style="color:darkred">No reviews in this restaurant.</p>
+  </ng-template>
+</div>

@@ -3,6 +3,7 @@ import {Restaurant} from '../models';
 import { NeighborhoodCodePipe } from '../neighborhood-code.pipe';
 import {RestaurantService} from '../restaurant.service';
 import {HistorialService} from '../historial.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -12,7 +13,7 @@ import {HistorialService} from '../historial.service';
 export class RestaurantComponent implements OnInit {
   flag = 0;
   @Input() item: Restaurant;
-  constructor(private historialService: HistorialService) { }
+  constructor(private historialService: HistorialService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,5 +30,9 @@ export class RestaurantComponent implements OnInit {
   }
   hideSection() {
     this.flag = 0;
+  }
+  detailsRestaurant(restaurant: Restaurant) {
+    const url: string = 'restaurants/' + restaurant.id;
+    this.router.navigate([url]);
   }
 }

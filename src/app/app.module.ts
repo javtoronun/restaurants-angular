@@ -16,16 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogInfoRestaurantComponent } from './dialog-info-restaurant/dialog-info-restaurant.component';
 import { MatCardModule } from '@angular/material/card';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
-import {RouterModule, Routes} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
-
-const routes: Routes = [
-  { path: '', redirectTo: '/restaurants', pathMatch: 'full' },
-  { path: 'restaurants', component: RestaurantListComponent },
-  { path: 'restaurant/new', component: CreateRestaurantComponent },
-  { path: '**', component: PageNotFoundComponent},
-];
+import { MatMenuModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { AppRoutingModule } from './app-routing.module';
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +36,8 @@ const routes: Routes = [
     DialogInfoRestaurantComponent,
     RestaurantListComponent,
     PageNotFoundComponent,
-    CreateRestaurantComponent
+    CreateRestaurantComponent,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +47,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatDialogModule,
     MatCardModule,
-    RouterModule.forRoot(routes)
+    MatMenuModule,
+    MatButtonModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [DialogInfoRestaurantComponent],
   providers: [RestaurantService],

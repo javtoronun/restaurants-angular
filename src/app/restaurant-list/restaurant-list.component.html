@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="error== 'max-restaurant-error' ">
+    <p style="color: darkred; text-align: center; background-color: #ffb3b3; border: 2px solid darkred"><b>Too much restaurants</b></p>
+  </div>
   <div class="row">
     <app-map class="col-md-12" [restaurants]="restaurants"></app-map>
     <article class="col-md-6" *ngFor="let item of pageOfItems">
@@ -9,7 +12,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-12" style="display:flex; justify-content: center;">
     <jw-pagination [items]="restaurants" (changePage)="onChangePage($event)" [pageSize]="2"></jw-pagination>
   </div>
 </div>

@@ -11,4 +11,7 @@ export class RestaurantService {
   getAllRestaurants(): Restaurant[] {
     return RESTAURANTS;
   }
+  getRestaurantById(id: number) {
+    return id > 0 && id < 11 ? RESTAURANTS[id - 1] : undefined;
+  }
 }

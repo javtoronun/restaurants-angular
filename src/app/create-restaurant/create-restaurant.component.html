@@ -1,1 +1,77 @@
-<p>create-restaurant works!</p>
+<div class="container">
+  <h1>Add new restaurant</h1>
+  <form [formGroup]="restaurantForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-group">
+      <label>Name</label>
+      <!-- [class.is-invalid]="restaurantForm.get('name').invalid && restaurantForm.get('name').touched && restaurantForm.get('name').dirty"  -->
+      <input formControlName="name" class="form-control" placeholder="Enter name restaurant">
+      <div *ngIf="restaurantForm.get('name').invalid && (restaurantForm.get('name').dirty && restaurantForm.get('name').touched)">
+        <div *ngIf="restaurantForm.get('name').hasError('required')" style="color:  #a94442">
+          Restaurant name is required
+        </div>
+        <div *ngIf="restaurantForm.get('name').hasError('minlength')" style="color:  #a94442">
+          Restaurant name must contain 5 letters
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input formControlName="address" class="form-control" placeholder="Enter address">
+    </div>
+    <div class="form-group">
+      <label>Neighborhood</label>
+      <input formControlName="neighborhood" class="form-control" placeholder="Enter neighborhood">
+    </div>
+    <div class="form-group">
+      <label>Photograph</label>
+      <input formControlName="photograph" class="form-control" placeholder="Enter neighborhood">
+    </div>
+    <div class="form-group">
+      <label for="cuisineTypeInput">Cuisine Type</label>
+      <input formControlName="cuisineType" type="text" class="form-control" id="cuisineTypeInput" placeholder="Enter cuisineType">
+    </div>
+    <div class="row" formGroupName="latlng">
+      <div class="form-group col-12 col-sm-6">
+        <label for="latitudeInput">Latitude</label>
+        <input type="number" formControlName="latitude" class="form-control" id="latitudeInput" placeholder="Enter latitude" step="0.000001">
+      </div>
+      <div class="form-group col-12 col-sm-6">
+        <label for="longitudeInput">Longitude</label>
+        <input type="number" formControlName="longitude" class="form-control" id="longitudeInput" placeholder="Enter longitude" step="0.000001">
+      </div>
+    </div>
+    <div class="form-subtitle">Opening hours</div>
+    <div class="row" formGroupName="operatingHours">
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="MondayInput">Monday</label>
+        <input type="text" class="form-control" id="MondayInput" placeholder="Enter opening hours" formControlName="Monday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="TuesdayInput">Tuesday</label>
+        <input type="text" class="form-control" id="TuesdayInput" placeholder="Enter opening hours" formControlName="Tuesday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="WednesdayInput">Wednesday</label>
+        <input type="text" class="form-control" id="WednesdayInput" placeholder="Enter opening hours" formControlName="Wednesday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="ThursdayInput">Thursday</label>
+        <input type="text" class="form-control" id="ThursdayInput" placeholder="Enter opening hours" formControlName="Thursday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="FridayInput">Friday</label>
+        <input type="text" class="form-control" id="FridayInput" placeholder="Enter opening hours" formControlName="Friday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="SaturdayInput">Saturday</label>
+        <input type="text" class="form-control" id="SaturdayInput" placeholder="Enter opening hours" formControlName="Saturday">
+      </div>
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <label for="SundayInput">Sunday</label>
+        <input type="text" class="form-control" id="SundayInput" placeholder="Enter opening hours" formControlName="Sunday">
+      </div>
+    </div>
+    <button style="background-color: #e6f9ff; color: dodgerblue" type="submit" [disabled]="restaurantForm.invalid" mat-button>Submit</button>
+  </form>
+</div>
+<br>

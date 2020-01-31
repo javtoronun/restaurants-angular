@@ -9,4 +9,7 @@ export class AppComponent implements OnInit {
   constructor() {
   }
   ngOnInit() {}
+  isActive(): boolean {
+    return true;
+  }
 }

@@ -11,6 +11,7 @@ import {DialogInfoRestaurantComponent} from '../dialog-info-restaurant/dialog-in
 })
 export class MapComponent implements OnInit {
   @Input() restaurants: Restaurant[];
+  @Input() restaurant: Restaurant;
   latitudCenter: number;
   longitudCenter: number;
   id: number;
